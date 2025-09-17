@@ -5,6 +5,7 @@ function RouteModalCom({ onClose, onAddRoutes, editRoute, onUpdateRoutes }) {
     code: "",
     origin: "",
     destination: "",
+    route_date: "",
     departure_time: "",
     arrival_time: "",
     price: "",
@@ -27,7 +28,7 @@ function RouteModalCom({ onClose, onAddRoutes, editRoute, onUpdateRoutes }) {
   const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    let payload = { ...routesData };
+    let payload = { ...routesData , origin: "หาดใหญ่"};
 
     if (!editRoute) {
       // ถ้าเป็นการเพิ่มใหม่ → ให้ available_seats = total_seats
@@ -90,13 +91,15 @@ function RouteModalCom({ onClose, onAddRoutes, editRoute, onUpdateRoutes }) {
           <div className="modal-grid">
             <div>
               <label className="label">ต้นทาง</label>
-              <input 
-                type="text"
-                name="origin"
-                value="หาดใหญ่"
-                className="input-field"
-                readOnly
-              />
+
+              <input
+    type="text"
+    name="origin"
+    value="หาดใหญ่"
+    className="input-field"
+    readOnly
+  />
+              
               {/* <select
               name="origin"
                 value={routesData.origin}
@@ -179,6 +182,18 @@ function RouteModalCom({ onClose, onAddRoutes, editRoute, onUpdateRoutes }) {
               />
             </div>
           </div>
+
+          <div>
+              <label className="label">วันที่เดินทาง</label>
+              <input
+                type="date"
+                name="route_date"
+                value={routesData.route_date}
+                onChange={handleChange}
+                className="input-field"
+                required
+              />
+            </div>
 
           <input
             type="hidden"

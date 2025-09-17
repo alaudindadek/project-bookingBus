@@ -59,10 +59,11 @@ function Home() {
         <SearchCom
           onSearch={(filters) => {
             const filtered = allRoutes.filter((route) => {
+              let searchDate = filters.date ? new Date(filters.date).toISOString().slice(0, 10) : "";
               return (
                 (filters.origin === "" || route.origin === filters.origin) &&
-                (filters.destination === "" ||
-                  route.destination === filters.destination)
+                (filters.destination === "" || route.destination === filters.destination) && 
+                (filters.date === "" || route.route_date === filters.date)
               );
             });
             setRoutes(filtered);
