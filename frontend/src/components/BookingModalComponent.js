@@ -60,6 +60,7 @@ function BookingModalCom({route , onClose , onAddBooking}) {
           <div className="detail-box">
             <div className="font-medium">{route.code}</div>
             <div>{route.origin} → {route.destination}</div>
+            <div>วันที่: {route.route_date}</div>
             <div>เวลา: {route.departure_time} - {route.arrival_time}</div>
             <div>ราคา: ฿{route.price} / ที่นั่ง</div>
             <div>ที่นั่งว่าง: {route.available_seats}</div>
